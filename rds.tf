@@ -27,7 +27,7 @@ module "db" {
 
   tags = {
     Owner       = "user"
-    Environment = "dev"
+    Environment = "env"
   }
 
   # DB subnet group
