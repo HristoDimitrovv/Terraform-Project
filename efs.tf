@@ -41,7 +41,7 @@ module "efs" {
   create_replication_configuration = false
 
   tags = {
-    Terraform   = "true"
-    Environment = "dev"
+    Terraform   = "swo"
+    Environment = var.region
   }
 }

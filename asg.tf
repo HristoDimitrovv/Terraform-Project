@@ -39,8 +39,8 @@ module "autoscaling" {
   }
 
   # Launch template
-  launch_template_name        = "example-asg"
-  launch_template_description = "Launch template example"
+  launch_template_name        = "swo-asg"
+  launch_template_description = "Launch template"
   update_default_version      = true
 
   image_id          = var.image_id
@@ -52,6 +52,6 @@ module "autoscaling" {
   # Security Group
   security_groups = [aws_security_group.allow_all.id]
 
-
-
+  # Load Balancer
+  target_group_arns = [aws_lb_target_group.swo-elb.arn]
 }
