@@ -14,7 +14,7 @@ module "db" {
 
   iam_database_authentication_enabled = true
 
-  vpc_security_group_ids = [aws_security_group.allow_all.id]
+  vpc_security_group_ids = [aws_security_group.allow_http.id]
 
   maintenance_window = "Mon:00:00-Mon:03:00"
   backup_window      = "03:00-06:00"
@@ -35,10 +35,10 @@ module "db" {
   subnet_ids             = var.private_subnets
 
   # DB parameter group
-  family = "mariadb10.6.10"
+  family = "mariadb10.6"
 
   # DB option group
-  major_engine_version = "10.6.10"
+  major_engine_version = "10.6"
 
   # Database Deletion Protection
   deletion_protection = false

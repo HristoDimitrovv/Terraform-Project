@@ -41,5 +41,5 @@ variable "image_id" {
 variable "instance_type" {
   description = "Instance type for the asg"
   type        = string
-  default     = "t3.micro"
+  default     = "t2.micro"
 }

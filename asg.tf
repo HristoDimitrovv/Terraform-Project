@@ -7,7 +7,7 @@ module "autoscaling" {
   max_size                  = 2
   desired_capacity          = 2
   wait_for_capacity_timeout = 0
-  health_check_type         = "EC2"
+  health_check_type         = "ELB"
   vpc_zone_identifier       = module.vpc.public_subnets
 
   initial_lifecycle_hooks = [
@@ -39,8 +39,8 @@ module "autoscaling" {
   }
 
   # Launch template
-  launch_template_name        = "example-asg"
-  launch_template_description = "Launch template example"
+  launch_template_name        = "swo-asg"
+  launch_template_description = "Launch"
   update_default_version      = true
 
   image_id          = var.image_id
@@ -50,8 +50,8 @@ module "autoscaling" {
   user_data         = base64encode(file("${path.module}/userdata.sh"))
 
   # Security Group
-  security_groups = [aws_security_group.allow_all.id]
+  security_groups = [aws_security_group.allow_http.id]
 
-
-
+  # Load Balancer
+  target_group_arns = [aws_lb_target_group.swo-elb.arn]
 }

@@ -11,7 +11,7 @@ module "efs" {
   bypass_policy_lockout_safety_check = false
   policy_statements = [
     {
-      sid     = "Example"
+      sid     = "Allow mount"
       actions = ["elasticfilesystem:ClientMount"]
       principals = [
         {
@@ -32,6 +32,7 @@ module "efs" {
     }
   }
 
+  # Security group
   security_group_vpc_id = module.vpc.vpc_id
 
   # Backup policy
@@ -41,7 +42,7 @@ module "efs" {
   create_replication_configuration = false
 
   tags = {
-    Terraform   = "true"
-    Environment = "dev"
+    Terraform   = "swo"
+    Environment = var.region
   }
 }
