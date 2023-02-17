@@ -30,7 +30,11 @@ module "db" {
   create_monitoring_role = true
 
   tags = {
+ rds
     Owner       = "swo"
+=======
+    Owner       = "user"
+ main
     Environment = var.region
   }
 
