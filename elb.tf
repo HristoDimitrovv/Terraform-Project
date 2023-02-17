@@ -1,6 +1,6 @@
 resource "aws_lb" "swo_elb" {
 
-  name               = "swo-${var.region}-elb"
+  name               = "swo-elb"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.allow_http.id]

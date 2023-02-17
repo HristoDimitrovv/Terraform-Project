@@ -2,7 +2,7 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "3.19.0"
 
-  name = "swo-${var.region}-vpc"
+  name = "swo-vpc"
   cidr = var.cidr
 
   azs             = var.azs
@@ -14,6 +14,6 @@ module "vpc" {
 
   tags = {
     Project     = "swo"
-    Environment = var.region
+    Environment = "eu-west-1"
   }
 }

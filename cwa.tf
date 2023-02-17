@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_metric_alarm" "swo_cwa" {
-  alarm_name          = "swo-${var.region}-cwa"
+  alarm_name          = "swo-cwa"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = "2"
   threshold           = "1000"

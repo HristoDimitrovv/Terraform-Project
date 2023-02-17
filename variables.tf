@@ -1,10 +1,4 @@
-############ VPC Variables
-
-variable "region" {
-  description = "The default region of the project."
-  type        = string
-  default     = "eu-west-1"
-}
+# VPC Variables
 
 variable "public_subnets" {
   description = "List of public subnets in the VPC"
@@ -30,7 +24,7 @@ variable "cidr" {
   default     = "10.0.0.0/16"
 }
 
-############ ASG Variables
+# ASG Variables
 
 variable "image_id" {
   description = "Image ID to be used by asg"
@@ -45,31 +39,7 @@ variable "instance_type" {
 }
 
 
-################ DB Variables
-
-variable "db_name" {
-  description = "db name"
-  type        = string
-  default     = "rds"
-}
-
-variable "db_password" {
-  description = "db password"
-  type        = string
-  default     = "Password1"
-}
-
-variable "db_username" {
-  description = "db username"
-  type        = string
-  default     = "user"
-}
-
-variable "db_port" {
-  description = "db port"
-  type        = string
-  default     = "3306"
-}
+# DB Variables
 
 variable "db_engine" {
   description = "db engine"
@@ -93,16 +63,4 @@ variable "db_allocated_storage" {
   description = "db allocated storage"
   type        = string
   default     = "5"
-}
-
-variable "db_maintenance_window" {
-  description = "db maintenance window"
-  type        = string
-  default     = "Mon:00:00-Mon:03:00"
-}
-
-variable "db_backup_window" {
-  description = "db backup window"
-  type        = string
-  default     = "03:00-06:00"
 }

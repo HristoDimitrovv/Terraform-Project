@@ -2,7 +2,7 @@ module "efs" {
   source = "terraform-aws-modules/efs/aws"
 
   # File system
-  name           = "swo-${var.region}-efs"
+  name           = "swo-efs"
   creation_token = "token"
   encrypted      = false
 
@@ -43,6 +43,6 @@ module "efs" {
 
   tags = {
     Project     = "swo"
-    Environment = var.region
+    Environment = "eu-west-1"
   }
 }

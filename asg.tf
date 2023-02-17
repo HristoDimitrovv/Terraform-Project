@@ -1,7 +1,7 @@
 module "autoscaling" {
   source  = "terraform-aws-modules/autoscaling/aws"
   version = "6.7.1"
-  name    = "swo-${var.region}-asg"
+  name    = "swo-asg"
 
   min_size                  = 2
   max_size                  = 2
@@ -47,16 +47,8 @@ module "autoscaling" {
   instance_type     = var.instance_type
   ebs_optimized     = true
   enable_monitoring = true
-  user_data = base64encode(templatefile
-    ("${path.module}/userdata.sh",
-      {
-        "DB_USERNAME" = "${var.db_username}",
-        "DB_PASSWORD" = "${var.db_password}",
-        "DB_HOSTNAME" = "${module.db.db_instance_address}",
-        "DATABASE"    = "bulgaria",
-      }
+  user_data = base64encode(file("${path.module}/userdata.sh"))
 
-  ))
 
   # Security Group
   security_groups = [aws_security_group.allow_http.id]
