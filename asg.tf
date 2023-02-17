@@ -51,7 +51,7 @@ module "autoscaling" {
 
   # Security Group
   security_groups = [aws_security_group.allow_http.id]
-
+  
   # Load Balancer
   target_group_arns = [aws_lb_target_group.swo-elb.arn]
 }

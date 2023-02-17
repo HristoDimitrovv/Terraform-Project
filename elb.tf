@@ -1,4 +1,5 @@
 resource "aws_lb" "swo_elb" {
+
   name               = "swo-${var.region}-elb"
   internal           = false
   load_balancer_type = "application"
@@ -26,4 +27,7 @@ resource "aws_lb_listener" "swo-elb" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.swo-elb.arn
   }
+
 }
+
+
