@@ -1,15 +1,9 @@
 resource "aws_lb" "swo_elb" {
- rds
+
   name               = "swo-${var.region}-elb"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.allow_http.id]
-
-  name               = "app-load-balancer"
-  internal           = false
-  load_balancer_type = "application"
-  security_groups    = [aws_security_group.allow_all.id]
- main
   subnets            = module.vpc.public_subnets
 
   enable_deletion_protection = false
@@ -33,8 +27,7 @@ resource "aws_lb_listener" "swo-elb" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.swo-elb.arn
   }
- rds
+
 }
-=======
-}
- main
+
+

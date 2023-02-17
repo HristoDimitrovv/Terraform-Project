@@ -25,16 +25,12 @@ module "db" {
 
   # Enhanced Monitoring - see example for details on how to create the role
   # by yourself, in case you don't want to create it automatically
-  monitoring_interval    = "30"
+  monitoring_interval    = "60"
   monitoring_role_name   = "MyRDSMonitoringRole"
   create_monitoring_role = true
 
   tags = {
- rds
-    Owner       = "swo"
-=======
-    Owner       = "user"
- main
+    Project = "swo"
     Environment = var.region
   }
 
