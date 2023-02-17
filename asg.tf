@@ -47,11 +47,20 @@ module "autoscaling" {
   instance_type     = var.instance_type
   ebs_optimized     = true
   enable_monitoring = true
-  user_data         = base64encode(file("${path.module}/userdata.sh"))
+  user_data = base64encode(templatefile
+    ("${path.module}/userdata.sh",
+      {
+        "DB_USERNAME" = "${var.db_username}",
+        "DB_PASSWORD" = "${var.db_password}",
+        "DB_HOSTNAME" = "${module.db.db_instance_address}",
+        "DATABASE"    = "bulgaria",
+      }
+
+  ))
 
   # Security Group
   security_groups = [aws_security_group.allow_http.id]
-  
+
   # Load Balancer
   target_group_arns = [aws_lb_target_group.swo-elb.arn]
 }

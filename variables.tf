@@ -62,7 +62,7 @@ variable "db_password" {
 variable "db_username" {
   description = "db username"
   type        = string
-  default     = "User"
+  default     = "user"
 }
 
 variable "db_port" {

@@ -3,6 +3,9 @@ module "db" {
 
   identifier = "swo-${var.region}-rds"
 
+  create_db_option_group    = false
+  create_db_parameter_group = false
+
   engine            = var.db_engine
   engine_version    = var.db_engine_version
   instance_class    = var.db_instance_class
@@ -30,16 +33,9 @@ module "db" {
   create_monitoring_role = true
 
   tags = {
-    Project = "swo"
+    Project     = "swo"
     Environment = var.region
   }
-
-  # DB parameter group
-  family = "mariadb10.6"
-
-  # DB option group
-  major_engine_version = "10.6"
-
   # Database Deletion Protection
   deletion_protection = false
 

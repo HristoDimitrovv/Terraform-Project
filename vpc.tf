@@ -1,5 +1,5 @@
 module "vpc" {
-  source = "terraform-aws-modules/vpc/aws"
+  source  = "terraform-aws-modules/vpc/aws"
   version = "3.19.0"
 
   name = "swo-${var.region}-vpc"
@@ -13,7 +13,7 @@ module "vpc" {
   enable_vpn_gateway = false
 
   tags = {
-    Project = "swo"
+    Project     = "swo"
     Environment = var.region
   }
 }

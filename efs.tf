@@ -42,7 +42,7 @@ module "efs" {
   create_replication_configuration = false
 
   tags = {
-    Project = "swo"
+    Project     = "swo"
     Environment = var.region
   }
 }
