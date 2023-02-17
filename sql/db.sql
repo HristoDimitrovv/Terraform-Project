@@ -4,7 +4,7 @@ DROP DATABASE IF EXISTS bulgaria;
 
 CREATE DATABASE bulgaria CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-GRANT ALL ON bulgaria.* TO 'web_user'@'%' IDENTIFIED BY 'Password1';
+GRANT ALL ON bulgaria.* TO 'User'@'%' IDENTIFIED BY 'Password1';
 
 USE bulgaria;
 
