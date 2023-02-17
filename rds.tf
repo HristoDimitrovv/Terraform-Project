@@ -10,10 +10,14 @@ module "db" {
 
   db_name  = "rds"
   username = "user"
+  password = var.my_db_password
   port     = "3306"
 
   iam_database_authentication_enabled = false
 
+  create_db_subnet_group = true
+  subnet_ids             = module.vpc.private_subnets
+  multi_az               = true
   vpc_security_group_ids = [aws_security_group.allow_http.id]
 
   maintenance_window = "Mon:00:00-Mon:03:00"
@@ -26,17 +30,9 @@ module "db" {
   create_monitoring_role = true
 
   tags = {
-    Owner       = "user"
-    Environment = "env"
+    Owner       = "swo"
+    Environment = var.region
   }
-
-
-
-  # DB subnet group
-  create_db_subnet_group = true
-  subnet_ids             = module.vpc.private_subnets
-  multi_az               = true
-
 
   # DB parameter group
   family = "mariadb10.6"

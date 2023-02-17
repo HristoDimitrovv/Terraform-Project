@@ -43,3 +43,12 @@ variable "instance_type" {
   type        = string
   default     = "t3.micro"
 }
+
+
+################ DB Variables
+
+variable "my_db_password" {
+  description = "db password"
+  type        = string
+  default     = "Password1"
+}
