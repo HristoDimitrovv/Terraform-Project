@@ -15,7 +15,7 @@ variable "public_subnets" {
 variable "private_subnets" {
   description = "List of private subnets in the VPC"
   type        = list(string)
-  default     = ["10.0.1.0/24"]
+  default     = ["10.0.1.0/24", "10.0.2.0/24"]
 }
 
 variable "azs" {
@@ -42,4 +42,13 @@ variable "instance_type" {
   description = "Instance type for the asg"
   type        = string
   default     = "t3.micro"
+}
+
+
+################ DB Variables
+
+variable "my_db_password" {
+  description = "db password"
+  type        = string
+  default     = "Password1"
 }
