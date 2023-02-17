@@ -3,15 +3,15 @@ module "db" {
 
   identifier = "swo-${var.region}-rds"
 
-  engine            = "mariadb"
-  engine_version    = "10.6.10"
-  instance_class    = "db.t3.micro"
-  allocated_storage = 5
+  engine            = var.db_engine
+  engine_version    = var.db_engine_version
+  instance_class    = var.db_instance_class
+  allocated_storage = var.db_allocated_storage
 
-  db_name  = "rds"
-  username = "user"
-  password = var.my_db_password
-  port     = "3306"
+  db_name  = var.db_name
+  username = var.db_username
+  password = var.db_password
+  port     = var.db_port
 
   iam_database_authentication_enabled = false
 
@@ -20,8 +20,8 @@ module "db" {
   multi_az               = true
   vpc_security_group_ids = [aws_security_group.allow_http.id]
 
-  maintenance_window = "Mon:00:00-Mon:03:00"
-  backup_window      = "03:00-06:00"
+  maintenance_window = var.db_maintenance_window
+  backup_window      = var.db_backup_window
 
   # Enhanced Monitoring - see example for details on how to create the role
   # by yourself, in case you don't want to create it automatically

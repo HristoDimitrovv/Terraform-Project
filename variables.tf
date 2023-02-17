@@ -47,8 +47,62 @@ variable "instance_type" {
 
 ################ DB Variables
 
-variable "my_db_password" {
+variable "db_name" {
+  description = "db name"
+  type        = string
+  default     = "rds"
+}
+
+variable "db_password" {
   description = "db password"
   type        = string
   default     = "Password1"
+}
+
+variable "db_username" {
+  description = "db username"
+  type        = string
+  default     = "User"
+}
+
+variable "db_port" {
+  description = "db port"
+  type        = string
+  default     = "3306"
+}
+
+variable "db_engine" {
+  description = "db engine"
+  type        = string
+  default     = "mariadb"
+}
+
+variable "db_engine_version" {
+  description = "db engine version"
+  type        = string
+  default     = "10.6.10"
+}
+
+variable "db_instance_class" {
+  description = "db instance class"
+  type        = string
+  default     = "db.t3.micro"
+}
+
+variable "db_allocated_storage" {
+  description = "db allocated storage"
+  type        = string
+  default     = "5"
+}
+
+variable "db_maintenance_window" {
+  description = "db maintenance window"
+  type        = string
+  default     = "Mon:00:00-Mon:03:00"
+}
+
+variable "db_backup_window" {
+  description = "db backup window"
+  type        = string
+  default     = "03:00-06:00"
 }
