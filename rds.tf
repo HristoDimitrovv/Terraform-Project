@@ -1,5 +1,5 @@
 module "db" {
-  source  = "terraform-aws-modules/rds/aws"
+  source = "terraform-aws-modules/rds/aws"
 
   identifier = "swo-${var.region}-rds"
 
@@ -8,11 +8,11 @@ module "db" {
   instance_class    = "db.t3.micro"
   allocated_storage = 5
 
-  db_name  = "swo-${var.region}-rds-db"
+  db_name  = "rds"
   username = "user"
   port     = "3306"
 
-  iam_database_authentication_enabled = true
+  iam_database_authentication_enabled = false
 
   vpc_security_group_ids = [aws_security_group.allow_http.id]
 
@@ -21,8 +21,8 @@ module "db" {
 
   # Enhanced Monitoring - see example for details on how to create the role
   # by yourself, in case you don't want to create it automatically
-  monitoring_interval = "30"
-  monitoring_role_name = "MyRDSMonitoringRole"
+  monitoring_interval    = "30"
+  monitoring_role_name   = "MyRDSMonitoringRole"
   create_monitoring_role = true
 
   tags = {
@@ -30,9 +30,13 @@ module "db" {
     Environment = "env"
   }
 
+
+
   # DB subnet group
   create_db_subnet_group = true
-  subnet_ids             = var.private_subnets
+  subnet_ids             = module.vpc.private_subnets
+  multi_az               = true
+
 
   # DB parameter group
   family = "mariadb10.6"
@@ -45,11 +49,11 @@ module "db" {
 
   parameters = [
     {
-      name = "character_set_client"
+      name  = "character_set_client"
       value = "utf8mb4"
     },
     {
-      name = "character_set_server"
+      name  = "character_set_server"
       value = "utf8mb4"
     }
   ]
