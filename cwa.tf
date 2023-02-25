@@ -7,13 +7,13 @@ resource "aws_cloudwatch_metric_alarm" "swo_cwa" {
   actions_enabled     = true
 
   metric_query {
-    id          = "m1"
+    id = "m1"
     return_data = true
 
     metric {
       metric_name = "RequestCount"
       namespace   = "ApplicationELB"
-      period      = "600"
+      period      = "60"
       stat        = "Sum"
       unit        = "Count"
 

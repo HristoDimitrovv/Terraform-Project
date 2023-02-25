@@ -5,15 +5,17 @@ module "db" {
 
   create_db_option_group    = false
   create_db_parameter_group = false
+  create_random_password    = false
 
-  engine            = var.db_engine
-  engine_version    = var.db_engine_version
-  instance_class    = var.db_instance_class
-  allocated_storage = var.db_allocated_storage
+  engine                    = var.db_engine
+  engine_version            = var.db_engine_version
+  instance_class            = var.db_instance_class
+  allocated_storage         = var.db_allocated_storage
 
-  db_name  = "db name"
+  db_name  = "rds"
   username = "user"
   port     = "3306"
+  password = "Password1"
 
   iam_database_authentication_enabled = false
 

@@ -29,5 +29,3 @@ resource "aws_lb_listener" "swo-elb" {
   }
 
 }
-
-
