@@ -2,7 +2,7 @@ module "efs" {
   source = "terraform-aws-modules/efs/aws"
 
   # File system
-  name           = "swo-efs"
+  name           = "web-efs"
   creation_token = "token"
   encrypted      = false
 
@@ -42,7 +42,7 @@ module "efs" {
   create_replication_configuration = false
 
   tags = {
-    Project     = "swo"
-    Environment = "eu-west-1"
+    Project     = var.project
+    Environment = var.environment
   }
 }

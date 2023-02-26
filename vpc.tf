@@ -2,7 +2,7 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "3.19.0"
 
-  name = "swo-vpc"
+  name = "web-vpc"
   cidr = var.cidr
 
   azs             = var.azs
@@ -13,7 +13,7 @@ module "vpc" {
   enable_vpn_gateway = false
 
   tags = {
-    Project     = "swo"
-    Environment = "eu-west-1"
+    Project     = var.project
+    Environment = var.environment
   }
 }

@@ -1,6 +1,6 @@
-resource "aws_lb" "swo_elb" {
+resource "aws_lb" "web_elb" {
 
-  name               = "swo-elb"
+  name               = "web-elb"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.allow_http.id]
@@ -10,22 +10,27 @@ resource "aws_lb" "swo_elb" {
 
 }
 
-resource "aws_lb_target_group" "swo-elb" {
-  name        = "swo-elb"
+resource "aws_lb_target_group" "web-elb" {
+  name        = "web-elb"
   port        = "80"
   protocol    = "HTTP"
   target_type = "instance"
   vpc_id      = module.vpc.vpc_id
 }
 
-resource "aws_lb_listener" "swo-elb" {
-  load_balancer_arn = aws_lb.swo_elb.arn
+resource "aws_lb_listener" "web-elb" {
+  load_balancer_arn = aws_lb.web_elb.arn
   port              = "80"
   protocol          = "HTTP"
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.swo-elb.arn
+    target_group_arn = aws_lb_target_group.web-elb.arn
+  }
+
+  tags = {
+    Project     = var.project
+    Environment = var.environment
   }
 
 }

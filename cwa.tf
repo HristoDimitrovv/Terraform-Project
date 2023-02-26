@@ -1,5 +1,5 @@
-resource "aws_cloudwatch_metric_alarm" "swo_cwa" {
-  alarm_name          = "swo-cwa"
+resource "aws_cloudwatch_metric_alarm" "web_cwa" {
+  alarm_name          = "web-cwa"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = "2"
   threshold           = "1000"
@@ -22,4 +22,11 @@ resource "aws_cloudwatch_metric_alarm" "swo_cwa" {
       }
     }
   }
+
+  tags = {
+    Project     = var.project
+    Environment = var.environment
+  }
+
 }
+

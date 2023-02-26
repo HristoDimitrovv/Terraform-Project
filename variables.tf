@@ -41,6 +41,31 @@ variable "instance_type" {
 
 # DB Variables
 
+variable "db_port" {
+  description = "db port"
+  type        = string
+  default     = "3306"
+}
+
+variable "db_username" {
+  description = "db username"
+  type        = string
+  default     = "user"
+}
+
+variable "db_password" {
+  description = "db password"
+  type        = string
+  default     = "Password1"
+}
+
+variable "db_name" {
+  description = "db name"
+  type        = string
+  default     = "rds"
+}
+
+
 variable "db_engine" {
   description = "db engine"
   type        = string
@@ -64,3 +89,67 @@ variable "db_allocated_storage" {
   type        = string
   default     = "5"
 }
+
+
+variable "db_maintenance_window" {
+  description = "db maintenance window"
+  type        = string
+  default     = "Mon:00:00-Mon:03:00"
+}
+
+variable "db_backup_window" {
+  description = "db backup window"
+  type        = string
+  default     = "03:00-06:00"
+}
+
+
+# Tag variables
+
+variable "project" {
+  description = "Project tag"
+  type        = string
+  default     = "webapp"
+}
+
+variable "environment" {
+  description = "Environment tag"
+  type        = string
+  default     = "eu-west-1"
+}
+
+
+# ASG Variables
+
+variable "max_size" {
+  description = "The maximum size of the autoscaling group"
+  type        = number
+  default     = 2
+}
+
+variable "min_size" {
+  description = "The minimum size of the autoscaling group"
+  type        = number
+  default     = 2
+}
+
+variable "desired_capacity" {
+  description = "The desired capacity of the autoscaling group"
+  type        = number
+  default     = 2
+}
+
+variable "wait_for_capacity_timeout" {
+  description = "The time to wait for capacity timeout"
+  type        = number
+  default     = 0
+}
+
+variable "health_check_type" {
+  description = "health check type "
+  type        = string
+  default     = "ELB"
+}
+
+
+
