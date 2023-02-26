@@ -2,4 +2,4 @@
 
 #Keep in mind that the FQDN provided for the RDS instance would be different if deployed in another region.
 
-mysql -v --skip-ssl -u user -p(password) -h web-rds.cpywdanzbdov.eu-west-1.rds.amazonaws.com < web-app/db/db_setup.sql
+mysql -v --skip-ssl -u user -p(db_password) -h web-rds.cpywdanzbdov.eu-west-1.rds.amazonaws.com < web-app/db/db_setup.sql
